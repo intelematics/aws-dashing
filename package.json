@@ -8,7 +8,7 @@
     "async": "^0.8.0",
     "aws-sdk": "~2.0.0-rc13",
     "cron": "~1.0.4",
-    "dashing-js": "~0.1.5",
+    "dashing-js": "https://github.com/rdkls/dashing-js.git#feat/upgrade-deps-rdkls-dec2018",
     "redis": "~0.10.1"
   },
   "engine": "node >= 0.10"
