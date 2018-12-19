@@ -168,6 +168,8 @@ module.exports = {
         });
     },
 
+    /// Guard Duty ///
+
     getGDDetectors: function(next) {
         var listDetectors = Q.nbind(guardduty.listDetectors, guardduty);
         listDetectors().then(function(data) {
@@ -178,9 +180,7 @@ module.exports = {
     getGDFindingsCount: function(detector_id, next) {
         var listFindings = Q.nbind(guardduty.listFindings, guardduty);
         var d = listFindings({DetectorId: detector_id});
-        //listFindings({DetectorId: detector_id, })
-        listFindings({DetectorId: detector_id, FindingCriteria: {"service.archived": true}})
-        //listFindings({DetectorId: detector_id, FindingCriteria: {"criterion": {"archived": false}}})
+        listFindings({DetectorId: detector_id, FindingCriteria: {"Criterion": {"service.archived": {"Eq": ["false"]}}}})
             .then(function(data) {
                 next(null, data.FindingIds.length);
             })
