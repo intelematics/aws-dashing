@@ -6,8 +6,11 @@ var async = require('async'),
 
     summary = { ec2_instances:0, elastic_ips:0, elbs:0, security_groups:0, s3_buckets:0,
         s3_objects:0, rds_instances:0, ec_clusters:0, ec_nodes:0, ec_security_groups:0,
-        r53_hosted_zones:0, r53_records:0, ebs_volumes:0, ebs_snapshots:0 };
-
+        r53_hosted_zones:0, r53_records:0, ebs_volumes:0, ebs_snapshots:0,
+        gd_findings_count: 0,
+        gd_detector_ids: [],
+        gd_findings: {}
+    };
 
 // DEFAULT CRON JOB, every x seconds
 
@@ -18,6 +21,16 @@ new CronJob(config.JOB_INTERVAL, function(){
     // send events for Meter widgets
 
     summary.my_ip = 'ip.address()';
+
+    aws_service.getGDDetectors(function(err, gd_detector_ids) {
+        summary.gd_detector_ids = gd_detector_ids;
+    });
+    summary.gd_detector_ids.forEach(function(detector_id) {
+        aws_service.getGDFindingsCount(detector_id, function(err, num_findings) {
+            console.log('do for det:' + detector_id + ' --- is == ' + num_findings);
+            summary.gd_findings[detector_id] = num_findings;
+        });
+    });
 
     aws_service.getEC2InstanceLimit(function(err, limit){
         if (!err) {
@@ -136,11 +149,16 @@ new CronJob(config.JOB_INTERVAL, function(){
 
 }, null, true, null);
 
+// send events for List widgets every 5 seconds
+setInterval(function() {
+    summary.gd_findings_count = Object.values(summary.gd_findings).reduce((a, b) => a + b, 0);
+    send_event('gd_findings_count', { text: summary.gd_findings_count});
+}, 1 * 1000);
 
 // send events for List widgets every 5 seconds
-
 setInterval(function() {
     send_event('summary', { items: [
+        { label:"GuardDuty Open Findings", value: summary.gd_findings_count },
         { label:"EC2 instances", value:summary.ec2_instances },
         { label:"Security Groups", value:summary.security_groups },
         { label:"Elastic Load Balancers", value:summary.elbs },
@@ -208,11 +226,4 @@ new CronJob(config.DAILY_JOB_INTERVAL, function(){
             });
         }
     });
-
 }, null, true, null);
-
-
-
-
-
-

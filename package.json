@@ -6,10 +6,12 @@
   "private": true,
   "dependencies": {
     "async": "^0.8.0",
-    "aws-sdk": "~2.0.0-rc13",
+    "aws-sdk": "^2.379.0",
     "cron": "~1.0.4",
     "dashing-js": "https://github.com/rdkls/dashing-js.git",
     "ip": "^1.1.5",
+    "q": "^1.5.1",
+    "q-foreach": "0.0.3",
     "redis": "~0.10.1"
   },
   "engine": "node >= 0.10"

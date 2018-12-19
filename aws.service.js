@@ -1,6 +1,7 @@
 var AWS = require('aws-sdk');
 var config = require('./config');
-
+var Q = require('q');
+require('q-foreach')(Q);
 
 // configure the aws sdk
 AWS.config.update(
@@ -19,6 +20,7 @@ var s3 = new AWS.S3();
 var rds = new AWS.RDS();
 var elasticache = new AWS.ElastiCache();
 var route53 = new AWS.Route53();
+var guardduty = new AWS.GuardDuty();
 
 // query the aws api and expose methods for jobs
 module.exports = {
@@ -164,25 +166,26 @@ module.exports = {
             if (err) return next(err, null);
             next(null, data.ResourceRecordSets);
         });
+    },
+
+    getGDDetectors: function(next) {
+        var listDetectors = Q.nbind(guardduty.listDetectors, guardduty);
+        listDetectors().then(function(data) {
+            next(null, data.DetectorIds);
+        });
+    },
+
+    getGDFindingsCount: function(detector_id, next) {
+        var listFindings = Q.nbind(guardduty.listFindings, guardduty);
+        var d = listFindings({DetectorId: detector_id});
+        //listFindings({DetectorId: detector_id, })
+        listFindings({DetectorId: detector_id, FindingCriteria: {"service.archived": true}})
+        //listFindings({DetectorId: detector_id, FindingCriteria: {"criterion": {"archived": false}}})
+            .then(function(data) {
+                next(null, data.FindingIds.length);
+            })
+            .fail(function(err) {
+                console.log(err);
+            });
     }
 }
-
-/*
-
-route53.listHostedZones(function(err, data) {
-    if (err) console.log(err, err.stack);
-    else console.log('hosted zones: ' + data.HostedZones.length);
-    send_event('hz', {current: data.HostedZones.length })
-
-    var records = 0
-    data.HostedZones.forEach(function(hz){
-        route53.listResourceRecordSets({HostedZoneId: hz.Id}, function (err, data){
-            if (err) console.log(err, err.stack);
-            else records += data.ResourceRecordSets.length
-            send_event('record', {current: records })
-        })
-    });
-
-});
-
-*/
