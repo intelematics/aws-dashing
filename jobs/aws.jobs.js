@@ -1,6 +1,7 @@
 var async = require('async'),
     CronJob = require('cron').CronJob,
     aws_service = require('../aws.service'),
+    ip = require("ip"),
     config = require("../config"),
 
     summary = { ec2_instances:0, elastic_ips:0, elbs:0, security_groups:0, s3_buckets:0,
@@ -15,6 +16,8 @@ new CronJob(config.JOB_INTERVAL, function(){
     console.log('running cron job at: ' + new Date());
 
     // send events for Meter widgets
+
+    summary.my_ip = 'ip.address()';
 
     aws_service.getEC2InstanceLimit(function(err, limit){
         if (!err) {
@@ -151,7 +154,8 @@ setInterval(function() {
         { label:"ElastiCache nodes", value:summary.ec_nodes },
         { label:"ElastiCache SG", value:summary.ec_security_groups },
         { label:"EBS Volumes", value:summary.ebs_volumes },
-        { label:"EBS Snapshots", value:summary.ebs_snapshots }
+        { label:"EBS Snapshots", value:summary.ebs_snapshots },
+        { label:"My IP", value: summary.my_ip }
     ] })
 }, 5 * 1000);
 
