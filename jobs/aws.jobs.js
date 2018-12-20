@@ -2,7 +2,6 @@ var async           = require('async'),
     CronJob         = require('cron').CronJob,
     aws_service     = require('../aws.service'),
     ip              = require("ip"),
-    dockerHostIp    = require('docker-host-ip'),
     config          = require("../config");
 
 var summary = { ec2_instances:0, elastic_ips:0, elbs:0, security_groups:0, s3_buckets:0,
@@ -14,14 +13,7 @@ var summary = { ec2_instances:0, elastic_ips:0, elbs:0, security_groups:0, s3_bu
         my_ip: '0.0.0.0'
     };
 
-dockerHostIp.default((error, result) => {
-    if(result) {
-        summary.my_ip = result;
-    }
-    else {
-        summary.my_ip = ip.address();
-    }
-});
+summary.my_ip = process.env.HOST_IP ? process.env.HOST_IP : ip.address();
 
 // DEFAULT CRON JOB, every x seconds
 
