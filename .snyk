@@ -1,0 +1,10 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.3
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:negotiator:20160616':
+    - dashing-js > express > connect > compression > accepts > negotiator:
+        patched: '2018-12-20T22:13:46.705Z'
+    - dashing-js > express > connect > serve-index > accepts > negotiator:
+        patched: '2018-12-20T22:13:46.705Z'
