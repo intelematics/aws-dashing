@@ -1,10 +1,163 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
 version: v1.13.3
-ignore: {}
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:constantinople:20180421':
+    - dashing-js > jade > constantinople:
+        reason: testing ignore vuln - npd
+        expires: '2019-01-19T22:35:57.735Z'
 # patches apply the minimum changes required to fix a vulnerability
 patch:
+  'npm:debug:20170905':
+    - compression > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > compression > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > connect-timeout > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > express-session > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-index > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > finalhandler > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > body-parser > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > morgan > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-static > send > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > send > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > finalhandler > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > morgan > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > express-session > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > serve-index > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > compression > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > body-parser > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > connect-timeout > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > serve-static > send > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+    - body-parser > debug:
+        patched: '2018-12-20T22:34:02.335Z'
+  'npm:lodash:20180130':
+    - dashing-js > mincer > lodash:
+        patched: '2018-12-20T22:34:02.335Z'
+  'npm:mime:20170907':
+    - dashing-js > express > send > mime:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > serve-static > send > mime:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-static > send > mime:
+        patched: '2018-12-20T22:34:02.335Z'
+  'npm:ms:20170412':
+    - compression > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > connect-timeout > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > compression > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-static > send > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > connect-timeout > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > express-session > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > finalhandler > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > morgan > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > send > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-index > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > body-parser > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-static > send > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > send > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > connect-timeout > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > morgan > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > finalhandler > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > express-session > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > serve-static > send > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > connect-timeout > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > compression > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > serve-index > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > body-parser > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > serve-static > send > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-favicon > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > connect > serve-favicon > ms:
+        patched: '2018-12-20T22:34:02.335Z'
+    - body-parser > debug > ms:
+        patched: '2018-12-20T22:34:02.335Z'
   'npm:negotiator:20160616':
+    - compression > accepts > negotiator:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > compression > accepts > negotiator:
+        patched: '2018-12-20T22:34:02.335Z'
+    - connect > serve-index > accepts > negotiator:
+        patched: '2018-12-20T22:34:02.335Z'
     - dashing-js > express > connect > compression > accepts > negotiator:
-        patched: '2018-12-20T22:13:46.705Z'
+        patched: '2018-12-20T22:34:02.335Z'
     - dashing-js > express > connect > serve-index > accepts > negotiator:
-        patched: '2018-12-20T22:13:46.705Z'
+        patched: '2018-12-20T22:34:02.335Z'
+    - accepts > negotiator:
+        patched: '2018-12-20T22:34:02.335Z'
+  'npm:uglify-js:20150824':
+    - dashing-js > jade > with > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > jade > with > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - constantinople > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - constantinople > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > jade > constantinople > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > jade > constantinople > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > jade > transformers > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > jade > transformers > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+  'npm:uglify-js:20151024':
+    - dashing-js > jade > with > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - constantinople > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > jade > constantinople > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > jade > transformers > uglify-js:
+        patched: '2018-12-20T22:34:02.335Z'
