@@ -178,7 +178,6 @@ module.exports = {
     },
 
     getGDFindingsCount: function(detector_id, next, NextToken, count) {
-        console.log('\ngetGDFindingsCount called with ' + detector_id + ', NextToken: ' + NextToken + '  Count: ' + count)
         var count = count ? count : 0;
 
         var listFindings = Q.nbind(guardduty.listFindings, guardduty);
@@ -196,7 +195,6 @@ module.exports = {
                     module.exports.getGDFindingsCount(detector_id, next, data.NextToken, count);
                 }
                 else {
-                    console.log('return with ' + count)
                     return next(null, count);
                 }
             })
