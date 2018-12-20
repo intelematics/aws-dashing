@@ -1,6 +1,6 @@
 module.exports = {
     ENV: process.env.NODE_ENV || 'development',
-    JOB_INTERVAL: "*/5 * * * * *",
+    JOB_INTERVAL: "*/10 * * * * *",
     LONG_JOB_INTERVAL:  "0 */30 * * * *",
     DAILY_JOB_INTERVAL: "0 0 00 * * *",
     AWS: {

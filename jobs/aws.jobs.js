@@ -159,7 +159,7 @@ setInterval(function() {
 // send events for List widgets every 5 seconds
 setInterval(function() {
     send_event('summary', { items: [
-        { label:"GuardDuty Open Findings", value: summary.gd_findings_count },
+        { label:"GuardDuty Findings", value: summary.gd_findings_count },
         { label:"EC2 instances", value:summary.ec2_instances },
         { label:"Security Groups", value:summary.security_groups },
         { label:"Elastic Load Balancers", value:summary.elbs },

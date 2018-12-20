@@ -177,12 +177,28 @@ module.exports = {
         });
     },
 
-    getGDFindingsCount: function(detector_id, next) {
+    getGDFindingsCount: function(detector_id, next, NextToken, count) {
+        console.log('\ngetGDFindingsCount called with ' + detector_id + ', NextToken: ' + NextToken + '  Count: ' + count)
+        var count = count ? count : 0;
+
         var listFindings = Q.nbind(guardduty.listFindings, guardduty);
         var d = listFindings({DetectorId: detector_id});
-        listFindings({DetectorId: detector_id, FindingCriteria: {"Criterion": {"service.archived": {"Eq": ["false"]}}}})
-            .then(function(data) {
-                next(null, data.FindingIds.length);
+        var params = {
+            DetectorId      : detector_id,
+            FindingCriteria : {"Criterion": {"service.archived": {"Eq": ["false"]}}},
+            NextToken       : NextToken
+        };
+
+        listFindings(params)
+        .then(function(data) {
+                count += data.FindingIds.length;
+                if(data.NextToken) {
+                    module.exports.getGDFindingsCount(detector_id, next, data.NextToken, count);
+                }
+                else {
+                    console.log('return with ' + count)
+                    return next(null, count);
+                }
             })
             .fail(function(err) {
                 console.log(err);
