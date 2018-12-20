@@ -1,16 +1,27 @@
-var async = require('async'),
-    CronJob = require('cron').CronJob,
-    aws_service = require('../aws.service'),
-    ip = require("ip"),
-    config = require("../config"),
+var async           = require('async'),
+    CronJob         = require('cron').CronJob,
+    aws_service     = require('../aws.service'),
+    ip              = require("ip"),
+    dockerHostIp    = require('docker-host-ip'),
+    config          = require("../config");
 
-    summary = { ec2_instances:0, elastic_ips:0, elbs:0, security_groups:0, s3_buckets:0,
+var summary = { ec2_instances:0, elastic_ips:0, elbs:0, security_groups:0, s3_buckets:0,
         s3_objects:0, rds_instances:0, ec_clusters:0, ec_nodes:0, ec_security_groups:0,
         r53_hosted_zones:0, r53_records:0, ebs_volumes:0, ebs_snapshots:0,
         gd_findings_count: 0,
         gd_detector_ids: [],
-        gd_findings: {}
+        gd_findings: {},
+        my_ip: '0.0.0.0'
     };
+
+dockerHostIp.default((error, result) => {
+    if(result) {
+        summary.my_ip = result;
+    }
+    else {
+        summary.my_ip = ip.address();
+    }
+});
 
 // DEFAULT CRON JOB, every x seconds
 
@@ -19,8 +30,6 @@ new CronJob(config.JOB_INTERVAL, function(){
     console.log('running cron job at: ' + new Date());
 
     // send events for Meter widgets
-
-    summary.my_ip = 'ip.address()';
 
     aws_service.getGDDetectors(function(err, gd_detector_ids) {
         summary.gd_detector_ids = gd_detector_ids;
