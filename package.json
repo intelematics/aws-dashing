@@ -8,7 +8,7 @@
     "async": "^0.8.0",
     "aws-sdk": "^2.379.0",
     "cron": "~1.0.4",
-    "dashing-js": "https://github.com/rdkls/dashing-js.git",
+    "dashing-js": "https://github.com/intelematics/dashing-js.git",
     "ip": "^1.1.5",
     "q": "^1.5.1",
     "q-foreach": "0.0.3",
