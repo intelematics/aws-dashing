@@ -23,4 +23,4 @@ dashing.default_dashboard = 'awstv';
 dashing.start();
 
 
-var aws_job = require('./jobs/aws.jobs');
+var aws_job = require('./jobs/aws.ci.jobs');

@@ -21,6 +21,7 @@ var rds = new AWS.RDS();
 var elasticache = new AWS.ElastiCache();
 var route53 = new AWS.Route53();
 var guardduty = new AWS.GuardDuty();
+var codebuild = new AWS.CodeBuild();
 
 // query the aws api and expose methods for jobs
 module.exports = {
