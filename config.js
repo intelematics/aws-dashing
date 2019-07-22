@@ -1,7 +1,8 @@
 module.exports = {
     ENV: process.env.NODE_ENV || 'development',
+    GIT_ACCESS_TOKEN: process.env.GIT_ACCESS_TOKEN,
     JOB_INTERVAL: "*/10 * * * * *",
-    LONG_JOB_INTERVAL:  "0 */30 * * * *",
+    LONG_JOB_INTERVAL: "0 */30 * * * *",
     DAILY_JOB_INTERVAL: "0 0 00 * * *",
     AWS: {
         ACCESSKEY: process.env.AWS_ACCESS_KEY_ID,
