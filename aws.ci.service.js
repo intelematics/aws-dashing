@@ -20,8 +20,6 @@ let hostname = "api.github.com";
 
 let codebuild = new AWS.CodeBuild();
 
-getBuildSetStatus();
-
 async function getBuildSetStatus() {
     let params = {};
     const projectListData = await codebuild.listProjects(params).promise();
@@ -62,15 +60,13 @@ async function getBuildSetStatus() {
             const response = await makeHttpCall(gitHub_token, hostname, "GET", path);
             resp = JSON.parse(response);
             let commit_status = resp['status'];
-            console.log(commit_status);
             if (commit_status.toLowerCase() === 'behind' || commit_status.toLowerCase() === 'identical') {
-                statusMap.set(project_name,builds[i].buildStatus);
+                statusMap.set(project_name, builds[i].buildStatus);
                 break;
             }
         }
     }
-
-    console.log(statusMap);
+    return statusMap;
 }
 
 function makeHttpCall(gitHub_token, hostname, method, path) {
@@ -115,10 +111,13 @@ function makeHttpCall(gitHub_token, hostname, method, path) {
     });
 }
 
-//
-// // query the aws api and expose methods for jobs
-// module.exports = {
-//
-//
-//
-// };
+
+// query the aws api and expose methods for jobs
+module.exports = {
+
+    getBuildSetStatus: async function (callback) {
+        let statusMap = await getBuildSetStatus();
+        callback(null,statusMap);
+    }
+
+};
