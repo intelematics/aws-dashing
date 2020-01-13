@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.3
+version: v1.14.0
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:constantinople:20180421':
@@ -53,6 +53,34 @@ patch:
         patched: '2018-12-20T22:34:02.335Z'
     - body-parser > debug:
         patched: '2018-12-20T22:34:02.335Z'
+    - snyk > undefsafe > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > needle > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > send > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > morgan > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > serve-index > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > compression > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > body-parser > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > connect-timeout > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > express-session > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > finalhandler > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > proxy-agent > pac-proxy-agent > get-uri > debug:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > serve-static > send > debug:
+        patched: '2020-01-13T00:31:43.658Z'
   'npm:lodash:20180130':
     - dashing-js > mincer > lodash:
         patched: '2018-12-20T22:34:02.335Z'
@@ -122,6 +150,42 @@ patch:
         patched: '2018-12-20T22:34:02.335Z'
     - body-parser > debug > ms:
         patched: '2018-12-20T22:34:02.335Z'
+    - dashing-js > express > send > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > undefsafe > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > needle > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > connect-timeout > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > send > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > compression > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > serve-index > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > morgan > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > finalhandler > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > proxy-agent > pac-proxy-agent > get-uri > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > express-session > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > connect-timeout > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > serve-static > send > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > body-parser > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > serve-static > send > debug > ms:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > express > connect > serve-favicon > ms:
+        patched: '2020-01-13T00:31:43.658Z'
   'npm:negotiator:20160616':
     - compression > accepts > negotiator:
         patched: '2018-12-20T22:34:02.335Z'
@@ -161,3 +225,31 @@ patch:
         patched: '2018-12-20T22:34:02.335Z'
     - dashing-js > jade > transformers > uglify-js:
         patched: '2018-12-20T22:34:02.335Z'
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2020-01-13T00:31:43.658Z'
+  SNYK-JS-LODASH-450202:
+    - snyk > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > @snyk/dep-graph > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > snyk-php-plugin > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > snyk-nuget-plugin > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > snyk-config > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > inquirer > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > node-sass > sass-graph > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
+    - dashing-js > node-sass > gaze > globule > lodash:
+        patched: '2020-01-13T00:31:43.658Z'
